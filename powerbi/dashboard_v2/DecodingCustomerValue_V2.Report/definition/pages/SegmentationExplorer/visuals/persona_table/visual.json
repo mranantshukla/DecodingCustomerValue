@@ -1,0 +1,238 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "persona_table",
+  "position": {
+    "x": 16,
+    "y": 112,
+    "z": 3,
+    "height": 240,
+    "width": 1248,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "persona_scorecard"
+                    }
+                  },
+                  "Property": "customer_persona"
+                }
+              },
+              "queryRef": "persona_scorecard.customer_persona",
+              "nativeQueryRef": "customer_persona",
+              "active": true
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "persona_scorecard"
+                        }
+                      },
+                      "Property": "customers"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(persona_scorecard.customers)",
+              "nativeQueryRef": "Sum of customers"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "persona_scorecard"
+                        }
+                      },
+                      "Property": "pct_of_customers"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(persona_scorecard.pct_of_customers)",
+              "nativeQueryRef": "Sum of pct_of_customers"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "persona_scorecard"
+                        }
+                      },
+                      "Property": "avg_loyalty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(persona_scorecard.avg_loyalty)",
+              "nativeQueryRef": "Sum of avg_loyalty"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "persona_scorecard"
+                        }
+                      },
+                      "Property": "avg_promo_dependency"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(persona_scorecard.avg_promo_dependency)",
+              "nativeQueryRef": "Sum of avg_promo_dependency"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "persona_scorecard"
+                        }
+                      },
+                      "Property": "avg_clv"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(persona_scorecard.avg_clv)",
+              "nativeQueryRef": "Sum of avg_clv"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "persona_scorecard"
+                        }
+                      },
+                      "Property": "total_clv"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(persona_scorecard.total_clv)",
+              "nativeQueryRef": "Sum of total_clv"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "persona_scorecard"
+                        }
+                      },
+                      "Property": "pct_of_clv"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(persona_scorecard.pct_of_clv)",
+              "nativeQueryRef": "Sum of pct_of_clv"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "persona_scorecard"
+                        }
+                      },
+                      "Property": "pct_satisfied"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(persona_scorecard.pct_satisfied)",
+              "nativeQueryRef": "Sum of pct_satisfied"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Persona scorecard'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#16324F'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

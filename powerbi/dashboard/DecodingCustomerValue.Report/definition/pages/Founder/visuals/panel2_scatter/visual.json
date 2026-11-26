@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "panel2_scatter",
+  "position": {
+    "x": 656,
+    "y": 248,
+    "z": 8,
+    "height": 216,
+    "width": 600,
+    "tabOrder": 8
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "customer_features"
+                    }
+                  },
+                  "Property": "customer_persona"
+                }
+              },
+              "queryRef": "customer_features.customer_persona",
+              "nativeQueryRef": "customer_persona",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "customer_features"
+                    }
+                  },
+                  "Property": "Avg Promo Dependency"
+                }
+              },
+              "queryRef": "customer_features.Avg Promo Dependency",
+              "nativeQueryRef": "Avg Promo Dependency"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "customer_features"
+                    }
+                  },
+                  "Property": "Avg Loyalty Score"
+                }
+              },
+              "queryRef": "customer_features.Avg Loyalty Score",
+              "nativeQueryRef": "Avg Loyalty Score"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "customer_features"
+                    }
+                  },
+                  "Property": "Total Customers"
+                }
+              },
+              "queryRef": "customer_features.Total Customers",
+              "nativeQueryRef": "Total Customers"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2) Promo dependency × retention (by persona)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

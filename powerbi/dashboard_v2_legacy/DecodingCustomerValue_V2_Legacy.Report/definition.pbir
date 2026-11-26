@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../DecodingCustomerValue_V2_Legacy.SemanticModel"
+    },
+    "byConnection": null
+  }
+}

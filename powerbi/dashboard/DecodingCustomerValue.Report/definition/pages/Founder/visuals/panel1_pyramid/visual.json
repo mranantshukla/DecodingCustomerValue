@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "panel1_pyramid",
+  "position": {
+    "x": 24,
+    "y": 248,
+    "z": 7,
+    "height": 216,
+    "width": 624,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "customer_features"
+                    }
+                  },
+                  "Property": "revenue_contribution_tier"
+                }
+              },
+              "queryRef": "customer_features.revenue_contribution_tier",
+              "nativeQueryRef": "revenue_contribution_tier",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "customer_features"
+                    }
+                  },
+                  "Property": "Total Projected CLV"
+                }
+              },
+              "queryRef": "customer_features.Total Projected CLV",
+              "nativeQueryRef": "Total Projected CLV"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1) Customer pyramid — top 20% hold ~60% of value'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

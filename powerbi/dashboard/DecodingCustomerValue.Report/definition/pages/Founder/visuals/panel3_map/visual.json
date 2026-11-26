@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "panel3_map",
+  "position": {
+    "x": 24,
+    "y": 472,
+    "z": 9,
+    "height": 216,
+    "width": 624,
+    "tabOrder": 9
+  },
+  "visual": {
+    "visualType": "azureMap",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "customer_features"
+                    }
+                  },
+                  "Property": "location"
+                }
+              },
+              "queryRef": "customer_features.location",
+              "nativeQueryRef": "location",
+              "active": true
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "customer_features"
+                    }
+                  },
+                  "Property": "Margin Adjusted CLV"
+                }
+              },
+              "queryRef": "customer_features.Margin Adjusted CLV",
+              "nativeQueryRef": "Margin Adjusted CLV"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'3) Geographic opportunity — margin-adjusted CLV by state'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

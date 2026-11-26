@@ -1,0 +1,155 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "panel2_scatter",
+  "position": {
+    "x": 644,
+    "y": 208,
+    "z": 9,
+    "height": 236,
+    "width": 620,
+    "tabOrder": 9
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "promo_retention_by_persona"
+                    }
+                  },
+                  "Property": "customer_persona"
+                }
+              },
+              "queryRef": "promo_retention_by_persona.customer_persona",
+              "nativeQueryRef": "customer_persona",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "promo_retention_by_persona"
+                        }
+                      },
+                      "Property": "avg_promo_dependency"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(promo_retention_by_persona.avg_promo_dependency)",
+              "nativeQueryRef": "Sum of avg_promo_dependency"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "promo_retention_by_persona"
+                        }
+                      },
+                      "Property": "avg_loyalty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(promo_retention_by_persona.avg_loyalty)",
+              "nativeQueryRef": "Sum of avg_loyalty"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "promo_retention_by_persona"
+                        }
+                      },
+                      "Property": "customers"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(promo_retention_by_persona.customers)",
+              "nativeQueryRef": "Sum of customers"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2) Promo dependency × retention (by persona)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#16324F'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

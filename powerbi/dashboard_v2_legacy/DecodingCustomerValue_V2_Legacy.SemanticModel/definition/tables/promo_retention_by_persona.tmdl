@@ -1,0 +1,68 @@
+table promo_retention_by_persona
+	lineageTag: tbl-promo-retention-by-persona
+
+	column customer_persona
+		dataType: string
+		summarizeBy: none
+		sourceColumn: customer_persona
+		lineageTag: col-promo-retention-by-persona-customer-persona
+
+	column customers
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: customers
+		formatString: #,##0
+		lineageTag: col-promo-retention-by-persona-customers
+
+	column avg_loyalty
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_loyalty
+		formatString: 0.000
+		lineageTag: col-promo-retention-by-persona-avg-loyalty
+
+	column avg_promo_dependency
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_promo_dependency
+		formatString: 0.000
+		lineageTag: col-promo-retention-by-persona-avg-promo-dependency
+
+	column avg_clv
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_clv
+		formatString: $#,##0
+		lineageTag: col-promo-retention-by-persona-avg-clv
+
+	column total_clv
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: total_clv
+		formatString: $#,##0
+		lineageTag: col-promo-retention-by-persona-total-clv
+
+	column quadrant
+		dataType: string
+		summarizeBy: none
+		sourceColumn: quadrant
+		lineageTag: col-promo-retention-by-persona-quadrant
+
+	partition promo_retention_by_persona = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("e:\Cagiitg\reports\sql_exports\promo_retention_by_persona.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(PromotedHeaders, {
+			        {"customer_persona", type text},
+			        {"customers", Int64.Type},
+			        {"avg_loyalty", type number},
+			        {"avg_promo_dependency", type number},
+			        {"avg_clv", type number},
+			        {"total_clv", type number},
+			        {"quadrant", type text}
+			    }),
+			    Cleaned = Table.ReplaceErrorValues(Typed, List.Transform(Table.ColumnNames(Typed), each {_, null}))
+			in
+			    Cleaned

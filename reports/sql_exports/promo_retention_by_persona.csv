@@ -1,0 +1,7 @@
+customer_persona,customers,avg_loyalty,avg_promo_dependency,avg_clv,total_clv,quadrant
+Promo-Dependent High-Value,482,0.585,0.835,5599.8,2699102.07,Margin at risk (High Loy / High Promo)
+Loyal Full-Price,417,0.678,0.124,6148.23,2563812.68,Healthy core (High Loy / Low Promo)
+Standard,1498,0.46,0.122,1521.48,2279172.83,Dormant (Low Loy / Low Promo)
+At-Risk Premium,233,0.583,0.125,9441.84,2199948.88,Healthy core (High Loy / Low Promo)
+Premium Loyalist,222,0.621,0.6,9015.83,2001515.16,Margin at risk (High Loy / High Promo)
+Promo Hunter,1048,0.461,0.838,815.63,854785.01,Promo hunters (Low Loy / High Promo)

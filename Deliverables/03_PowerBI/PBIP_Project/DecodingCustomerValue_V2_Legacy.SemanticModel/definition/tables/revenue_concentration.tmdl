@@ -1,0 +1,54 @@
+table revenue_concentration
+	lineageTag: tbl-revenue-concentration
+
+	column value_decile
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: value_decile
+		formatString: 0
+		lineageTag: col-revenue-concentration-value-decile
+
+	column customers
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: customers
+		formatString: #,##0
+		lineageTag: col-revenue-concentration-customers
+
+	column decile_clv
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: decile_clv
+		formatString: $#,##0
+		lineageTag: col-revenue-concentration-decile-clv
+
+	column pct_of_total_clv
+		dataType: double
+		summarizeBy: average
+		sourceColumn: pct_of_total_clv
+		formatString: 0.0%
+		lineageTag: col-revenue-concentration-pct-of-total-clv
+
+	column cumulative_pct_clv
+		dataType: double
+		summarizeBy: average
+		sourceColumn: cumulative_pct_clv
+		formatString: 0.0%
+		lineageTag: col-revenue-concentration-cumulative-pct-clv
+
+	partition revenue_concentration = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("e:\Cagiitg\reports\sql_exports\revenue_concentration.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(PromotedHeaders, {
+			        {"value_decile", Int64.Type},
+			        {"customers", Int64.Type},
+			        {"decile_clv", type number},
+			        {"pct_of_total_clv", type number},
+			        {"cumulative_pct_clv", type number}
+			    }),
+			    Cleaned = Table.ReplaceErrorValues(Typed, List.Transform(Table.ColumnNames(Typed), each {_, null}))
+			in
+			    Cleaned

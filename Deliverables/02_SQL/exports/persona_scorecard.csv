@@ -1,0 +1,7 @@
+customer_persona,customers,pct_of_customers,avg_loyalty,avg_promo_dependency,avg_clv,total_clv,pct_of_clv,pct_satisfied
+Promo-Dependent High-Value,482,12.4,0.585,0.835,5599.8,2699102.07,21.4,0.351
+Loyal Full-Price,417,10.7,0.678,0.124,6148.23,2563812.68,20.4,1.0
+Standard,1498,38.4,0.46,0.122,1521.48,2279172.83,18.1,0.426
+At-Risk Premium,233,6.0,0.583,0.125,9441.84,2199948.88,17.5,0.0
+Premium Loyalist,222,5.7,0.621,0.6,9015.83,2001515.16,15.9,1.0
+Promo Hunter,1048,26.9,0.461,0.838,815.63,854785.01,6.8,0.486

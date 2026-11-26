@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "footer_caveat",
+  "position": {
+    "x": 24,
+    "y": 698,
+    "z": 11,
+    "height": 16,
+    "width": 1232,
+    "tabOrder": 11
+  },
+  "visual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Discount / subscription / gender are structurally entangled in the source — promo metrics are directional, not causal. See LIMITATIONS_AND_ETHICS.md.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "fontStyle": "italic",
+                      "color": "#8A99A8",
+                      "fontFamily": "'Segoe UI'"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

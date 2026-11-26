@@ -1,0 +1,143 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "promo_heavy_table",
+  "position": {
+    "x": 644,
+    "y": 408,
+    "z": 6,
+    "height": 280,
+    "width": 620,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "promo_heavy_regions"
+                    }
+                  },
+                  "Property": "location"
+                }
+              },
+              "queryRef": "promo_heavy_regions.location",
+              "nativeQueryRef": "location",
+              "active": true
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "promo_heavy_regions"
+                        }
+                      },
+                      "Property": "customers"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(promo_heavy_regions.customers)",
+              "nativeQueryRef": "Sum of customers"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "promo_heavy_regions"
+                        }
+                      },
+                      "Property": "promo_dependency"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(promo_heavy_regions.promo_dependency)",
+              "nativeQueryRef": "Sum of promo_dependency"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "promo_heavy_regions"
+                        }
+                      },
+                      "Property": "total_clv"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(promo_heavy_regions.total_clv)",
+              "nativeQueryRef": "Sum of total_clv"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Promo-heavy regions'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#16324F'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

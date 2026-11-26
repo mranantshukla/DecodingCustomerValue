@@ -1,0 +1,16 @@
+.git
+.github
+.venv
+venv
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+.mypy_cache
+data/processed/*.db
+data/processed/*.csv
+reports/sql_exports
+notebooks/.ipynb_checkpoints
+.env
+assets/*.gif
+assets/*.png

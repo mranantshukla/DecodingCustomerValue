@@ -1,0 +1,5 @@
+category,customers,total_clv,avg_loyalty,avg_promo_dependency
+Clothing,1737,5520737.63,0.514,0.421
+Accessories,1240,4034279.37,0.518,0.438
+Footwear,599,2034914.23,0.52,0.432
+Outerwear,324,1008405.4,0.513,0.444

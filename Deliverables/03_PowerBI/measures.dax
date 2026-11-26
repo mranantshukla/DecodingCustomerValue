@@ -1,0 +1,150 @@
+// ============================================================================
+// Decoding Customer Value — Power BI DAX measures
+//
+// Data source: data/processed/customer_features.csv  (table: customer_features)
+// Import this CSV into Power BI Desktop (Get Data > Text/CSV), set types, then
+// create these measures (Modeling > New measure). Measures are grouped by the
+// dashboard page they serve. Comments explain intent so a reviewer can follow.
+//
+// Convention: flags (premium_customer_flag, satisfaction_flag) are stored 0/1.
+// ============================================================================
+
+
+// ---------------------------------------------------------------------------
+// 1. CORE / EXECUTIVE KPIs
+// ---------------------------------------------------------------------------
+
+Total Customers = DISTINCTCOUNT ( customer_features[customer_id] )
+
+Total Projected CLV =
+SUM ( customer_features[estimated_clv_proxy] )
+
+Avg CLV per Customer =
+DIVIDE ( [Total Projected CLV], [Total Customers] )
+
+Avg Loyalty Score =
+AVERAGE ( customer_features[loyalty_score] )
+
+Avg Promo Dependency =
+AVERAGE ( customer_features[promo_dependency_score] )
+
+Pct Premium Customers =
+DIVIDE (
+    CALCULATE ( [Total Customers], customer_features[premium_customer_flag] = 1 ),
+    [Total Customers]
+)
+
+Pct Satisfied =
+AVERAGE ( customer_features[satisfaction_flag] )   // already 0/1 -> share
+
+Pct Discounted =
+DIVIDE (
+    CALCULATE ( [Total Customers], customer_features[discount_applied] = "Yes" ),
+    [Total Customers]
+)
+
+Pct Subscribed =
+DIVIDE (
+    CALCULATE ( [Total Customers], customer_features[subscription_status] = "Yes" ),
+    [Total Customers]
+)
+
+
+// ---------------------------------------------------------------------------
+// 2. REVENUE CONCENTRATION (Customer pyramid / Pareto)
+// ---------------------------------------------------------------------------
+
+// CLV held by the top 20% of customers — the "protect the top" headline.
+CLV Top 20 Pct =
+VAR Cutoff =
+    PERCENTILEX.INC ( ALL ( customer_features ), customer_features[estimated_clv_proxy], 0.80 )
+RETURN
+    CALCULATE ( [Total Projected CLV], customer_features[estimated_clv_proxy] >= Cutoff )
+
+Pct CLV from Top 20 Pct =
+DIVIDE ( [CLV Top 20 Pct], CALCULATE ( [Total Projected CLV], ALL ( customer_features ) ) )
+
+// Running cumulative CLV share when visualised by a value-rank axis.
+Cumulative CLV Pct =
+VAR CurrentClv = [Total Projected CLV]
+VAR GrandTotal = CALCULATE ( [Total Projected CLV], ALLSELECTED ( customer_features ) )
+RETURN DIVIDE ( CurrentClv, GrandTotal )
+
+
+// ---------------------------------------------------------------------------
+// 3. PROMO DEPENDENCY vs RETENTION (strategic 2x2)
+// ---------------------------------------------------------------------------
+
+// Average-anchored bands (calculated columns are simpler here, but these
+// measures let the 2x2 respond to slicers).
+Loyalty Band =
+IF (
+    AVERAGE ( customer_features[loyalty_score] )
+        >= CALCULATE ( AVERAGE ( customer_features[loyalty_score] ), ALL ( customer_features ) ),
+    "High Loyalty", "Low Loyalty"
+)
+
+Margin At Risk CLV =
+// CLV sitting with high-loyalty BUT high-promo customers (loyal yet subsidised).
+CALCULATE (
+    [Total Projected CLV],
+    customer_features[promo_dependency_score] >= 0.5,
+    customer_features[loyalty_score]
+        >= CALCULATE ( AVERAGE ( customer_features[loyalty_score] ), ALL ( customer_features ) )
+)
+
+
+// ---------------------------------------------------------------------------
+// 4. MARGIN / DISCOUNT RISK
+// ---------------------------------------------------------------------------
+
+Discounted CLV =
+CALCULATE ( [Total Projected CLV], customer_features[discount_applied] = "Yes" )
+
+Full Price CLV =
+CALCULATE ( [Total Projected CLV], customer_features[discount_applied] = "No" )
+
+Pct CLV Discount Attached =
+DIVIDE ( [Discounted CLV], [Total Projected CLV] )
+
+// Estimated annual margin recoverable by sunsetting discounts for full-price-
+// leaning tiers, at an assumed 15% margin recovery. Mirrors the Streamlit
+// simulator's default so the two artefacts agree.
+Estimated Margin Recovery =
+VAR MarginPts = 0.15
+RETURN
+CALCULATE (
+    SUMX ( customer_features, customer_features[annual_value] * MarginPts ),
+    customer_features[discount_applied] = "Yes",
+    customer_features[promo_reliance_tier] IN { "Full-Price Loyalist", "Occasional Discount" }
+)
+
+
+// ---------------------------------------------------------------------------
+// 5. GEOGRAPHY
+// ---------------------------------------------------------------------------
+
+Avg Region Quality = AVERAGE ( customer_features[region_quality_index] )
+Avg Organic Demand = AVERAGE ( customer_features[organic_demand_score] )
+
+// Margin-adjusted regional CLV — discounts down-weight a region's headline value.
+Margin Adjusted CLV =
+SUMX (
+    customer_features,
+    customer_features[estimated_clv_proxy] * ( 1 - customer_features[promo_dependency_score] )
+)
+
+
+// ---------------------------------------------------------------------------
+// 6. DYNAMIC TITLES / UX
+// ---------------------------------------------------------------------------
+
+Selected Persona Label =
+IF (
+    ISFILTERED ( customer_features[customer_persona] ),
+    SELECTEDVALUE ( customer_features[customer_persona], "Multiple personas" ),
+    "All personas"
+)
+
+KPI CLV Card Title =
+"Projected CLV — " & [Selected Persona Label]

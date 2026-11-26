@@ -1,0 +1,461 @@
+table customer_features
+	lineageTag: tbl-customer-features
+
+	column customer_id
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: customer_id
+		formatString: 0
+		lineageTag: col-customer-id
+
+	column age
+		dataType: int64
+		summarizeBy: average
+		sourceColumn: age
+		formatString: 0
+		lineageTag: col-age
+
+	column gender
+		dataType: string
+		summarizeBy: none
+		sourceColumn: gender
+		lineageTag: col-gender
+
+	column item_purchased
+		dataType: string
+		summarizeBy: none
+		sourceColumn: item_purchased
+		lineageTag: col-item-purchased
+
+	column category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: category
+		lineageTag: col-category
+
+	column purchase_amount
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: purchase_amount
+		formatString: $#,##0.00
+		lineageTag: col-purchase-amount
+
+	column location
+		dataType: string
+		summarizeBy: none
+		sourceColumn: location
+		dataCategory: State
+		lineageTag: col-location
+
+	column size
+		dataType: string
+		summarizeBy: none
+		sourceColumn: size
+		lineageTag: col-size
+
+	column color
+		dataType: string
+		summarizeBy: none
+		sourceColumn: color
+		lineageTag: col-color
+
+	column season
+		dataType: string
+		summarizeBy: none
+		sourceColumn: season
+		lineageTag: col-season
+
+	column review_rating
+		dataType: double
+		summarizeBy: average
+		sourceColumn: review_rating
+		formatString: 0.00
+		lineageTag: col-review-rating
+
+	column subscription_status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: subscription_status
+		lineageTag: col-subscription-status
+
+	column shipping_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: shipping_type
+		lineageTag: col-shipping-type
+
+	column discount_applied
+		dataType: string
+		summarizeBy: none
+		sourceColumn: discount_applied
+		lineageTag: col-discount-applied
+
+	column previous_purchases
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: previous_purchases
+		formatString: 0
+		lineageTag: col-previous-purchases
+
+	column payment_method
+		dataType: string
+		summarizeBy: none
+		sourceColumn: payment_method
+		lineageTag: col-payment-method
+
+	column frequency_of_purchases
+		dataType: string
+		summarizeBy: none
+		sourceColumn: frequency_of_purchases
+		lineageTag: col-frequency-of-purchases
+
+	column loyalty_score
+		dataType: double
+		summarizeBy: average
+		sourceColumn: loyalty_score
+		formatString: 0.000
+		lineageTag: col-loyalty-score
+
+	column loyalty_score_v1
+		dataType: double
+		summarizeBy: average
+		sourceColumn: loyalty_score_v1
+		formatString: 0.000
+		lineageTag: col-loyalty-score-v1
+
+	column loyalty_score_v2
+		dataType: double
+		summarizeBy: average
+		sourceColumn: loyalty_score_v2
+		formatString: 0.000
+		lineageTag: col-loyalty-score-v2
+
+	column loyalty_tier
+		dataType: string
+		summarizeBy: none
+		sourceColumn: loyalty_tier
+		lineageTag: col-loyalty-tier
+
+	column loyalty_confidence_index
+		dataType: double
+		summarizeBy: average
+		sourceColumn: loyalty_confidence_index
+		formatString: 0.000
+		lineageTag: col-loyalty-confidence-index
+
+	column repeat_purchase_intensity
+		dataType: double
+		summarizeBy: average
+		sourceColumn: repeat_purchase_intensity
+		formatString: 0.000
+		lineageTag: col-repeat-purchase-intensity
+
+	column brand_affinity_score
+		dataType: double
+		summarizeBy: average
+		sourceColumn: brand_affinity_score
+		formatString: 0.000
+		lineageTag: col-brand-affinity-score
+
+	column promo_dependency_score
+		dataType: double
+		summarizeBy: average
+		sourceColumn: promo_dependency_score
+		formatString: 0.000
+		lineageTag: col-promo-dependency-score
+
+	column non_discount_purchase_ratio
+		dataType: double
+		summarizeBy: average
+		sourceColumn: non_discount_purchase_ratio
+		formatString: 0.000
+		lineageTag: col-non-discount-purchase-ratio
+
+	column discount_elasticity_proxy
+		dataType: double
+		summarizeBy: average
+		sourceColumn: discount_elasticity_proxy
+		formatString: 0.0000
+		lineageTag: col-discount-elasticity-proxy
+
+	column promo_reliance_tier
+		dataType: string
+		summarizeBy: none
+		sourceColumn: promo_reliance_tier
+		lineageTag: col-promo-reliance-tier
+
+	column annual_value
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: annual_value
+		formatString: $#,##0
+		lineageTag: col-annual-value
+
+	column margin_factor
+		dataType: double
+		summarizeBy: average
+		sourceColumn: margin_factor
+		formatString: 0.000
+		lineageTag: col-margin-factor
+
+	column economic_value_proxy
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: economic_value_proxy
+		formatString: $#,##0
+		lineageTag: col-economic-value-proxy
+
+	column expected_tenure_years
+		dataType: double
+		summarizeBy: average
+		sourceColumn: expected_tenure_years
+		formatString: 0.00
+		lineageTag: col-expected-tenure-years
+
+	column estimated_clv_proxy
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: estimated_clv_proxy
+		formatString: $#,##0
+		lineageTag: col-estimated-clv-proxy
+
+	column revenue_contribution_tier
+		dataType: string
+		summarizeBy: none
+		sourceColumn: revenue_contribution_tier
+		lineageTag: col-revenue-contribution-tier
+
+	column high_value_probability
+		dataType: double
+		summarizeBy: average
+		sourceColumn: high_value_probability
+		formatString: 0.000
+		lineageTag: col-high-value-probability
+
+	column premium_customer_flag
+		dataType: int64
+		summarizeBy: average
+		sourceColumn: premium_customer_flag
+		formatString: 0%
+		lineageTag: col-premium-customer-flag
+
+	column satisfaction_flag
+		dataType: int64
+		summarizeBy: average
+		sourceColumn: satisfaction_flag
+		formatString: 0%
+		lineageTag: col-satisfaction-flag
+
+	column category_breadth_est
+		dataType: double
+		summarizeBy: average
+		sourceColumn: category_breadth_est
+		formatString: 0.00
+		lineageTag: col-category-breadth-est
+
+	column shipping_urgency_index
+		dataType: double
+		summarizeBy: average
+		sourceColumn: shipping_urgency_index
+		formatString: 0.00
+		lineageTag: col-shipping-urgency-index
+
+	column payment_repeat_index
+		dataType: double
+		summarizeBy: average
+		sourceColumn: payment_repeat_index
+		formatString: 0.000
+		lineageTag: col-payment-repeat-index
+
+	column seasonal_consistency_score
+		dataType: double
+		summarizeBy: average
+		sourceColumn: seasonal_consistency_score
+		formatString: 0.000
+		lineageTag: col-seasonal-consistency-score
+
+	column organic_demand_score
+		dataType: double
+		summarizeBy: average
+		sourceColumn: organic_demand_score
+		formatString: 0.000
+		lineageTag: col-organic-demand-score
+
+	column region_quality_index
+		dataType: double
+		summarizeBy: average
+		sourceColumn: region_quality_index
+		formatString: 0.000
+		lineageTag: col-region-quality-index
+
+	column promo_sensitivity_geo
+		dataType: double
+		summarizeBy: average
+		sourceColumn: promo_sensitivity_geo
+		formatString: 0.0000
+		lineageTag: col-promo-sensitivity-geo
+
+	column customer_persona
+		dataType: string
+		summarizeBy: none
+		sourceColumn: customer_persona
+		lineageTag: col-customer-persona
+
+	column behaviour_cluster
+		dataType: string
+		summarizeBy: none
+		sourceColumn: behaviour_cluster
+		lineageTag: col-behaviour-cluster
+
+	measure 'Total Customers' = DISTINCTCOUNT ( customer_features[customer_id] )
+		formatString: #,##0
+		displayFolder: "1 Core KPIs"
+		lineageTag: meas-total-customers
+
+	measure 'Total Projected CLV' = SUM ( customer_features[estimated_clv_proxy] )
+		formatString: $#,##0
+		displayFolder: "1 Core KPIs"
+		lineageTag: meas-total-projected-clv
+
+	measure 'Avg CLV per Customer' = DIVIDE ( [Total Projected CLV], [Total Customers] )
+		formatString: $#,##0
+		displayFolder: "1 Core KPIs"
+		lineageTag: meas-avg-clv-per-customer
+
+	measure 'Avg Loyalty Score' = AVERAGE ( customer_features[loyalty_score] )
+		formatString: 0.000
+		displayFolder: "1 Core KPIs"
+		lineageTag: meas-avg-loyalty-score
+
+	measure 'Avg Promo Dependency' = AVERAGE ( customer_features[promo_dependency_score] )
+		formatString: 0.000
+		displayFolder: "1 Core KPIs"
+		lineageTag: meas-avg-promo-dependency
+
+	measure 'Pct Premium Customers' = DIVIDE ( CALCULATE ( [Total Customers], customer_features[premium_customer_flag] = 1 ), [Total Customers] )
+		formatString: 0.0%
+		displayFolder: "1 Core KPIs"
+		lineageTag: meas-pct-premium-customers
+
+	measure 'Pct Satisfied' = AVERAGE ( customer_features[satisfaction_flag] )
+		formatString: 0.0%
+		displayFolder: "1 Core KPIs"
+		lineageTag: meas-pct-satisfied
+
+	measure 'Pct Discounted' = DIVIDE ( CALCULATE ( [Total Customers], customer_features[discount_applied] = "Yes" ), [Total Customers] )
+		formatString: 0.0%
+		displayFolder: "1 Core KPIs"
+		lineageTag: meas-pct-discounted
+
+	measure 'Pct Subscribed' = DIVIDE ( CALCULATE ( [Total Customers], customer_features[subscription_status] = "Yes" ), [Total Customers] )
+		formatString: 0.0%
+		displayFolder: "1 Core KPIs"
+		lineageTag: meas-pct-subscribed
+
+	measure 'CLV Top 20 Pct' = VAR Cutoff = PERCENTILEX.INC ( ALL ( customer_features ), customer_features[estimated_clv_proxy], 0.80 ) RETURN CALCULATE ( [Total Projected CLV], customer_features[estimated_clv_proxy] >= Cutoff )
+		formatString: $#,##0
+		displayFolder: "2 Concentration"
+		lineageTag: meas-clv-top-20-pct
+
+	measure 'Pct CLV from Top 20 Pct' = DIVIDE ( [CLV Top 20 Pct], CALCULATE ( [Total Projected CLV], ALL ( customer_features ) ) )
+		formatString: 0.0%
+		displayFolder: "2 Concentration"
+		lineageTag: meas-pct-clv-from-top-20-pct
+
+	measure 'Discounted CLV' = CALCULATE ( [Total Projected CLV], customer_features[discount_applied] = "Yes" )
+		formatString: $#,##0
+		displayFolder: "3 Margin Risk"
+		lineageTag: meas-discounted-clv
+
+	measure 'Full Price CLV' = CALCULATE ( [Total Projected CLV], customer_features[discount_applied] = "No" )
+		formatString: $#,##0
+		displayFolder: "3 Margin Risk"
+		lineageTag: meas-full-price-clv
+
+	measure 'Pct CLV Discount Attached' = DIVIDE ( [Discounted CLV], [Total Projected CLV] )
+		formatString: 0.0%
+		displayFolder: "3 Margin Risk"
+		lineageTag: meas-pct-clv-discount-attached
+
+	measure 'Estimated Margin Recovery' = VAR MarginPts = 0.15 RETURN CALCULATE ( SUMX ( customer_features, customer_features[annual_value] * MarginPts ), customer_features[discount_applied] = "Yes", customer_features[promo_reliance_tier] IN { "Full-Price Loyalist", "Occasional Discount" } )
+		formatString: $#,##0
+		displayFolder: "3 Margin Risk"
+		lineageTag: meas-estimated-margin-recovery
+
+	measure 'Margin At Risk CLV' = CALCULATE ( [Total Projected CLV], customer_features[promo_dependency_score] >= 0.5, customer_features[loyalty_score] >= CALCULATE ( AVERAGE ( customer_features[loyalty_score] ), ALL ( customer_features ) ) )
+		formatString: $#,##0
+		displayFolder: "4 Promo x Retention"
+		lineageTag: meas-margin-at-risk-clv
+
+	measure 'Avg Region Quality' = AVERAGE ( customer_features[region_quality_index] )
+		formatString: 0.000
+		displayFolder: "5 Geography"
+		lineageTag: meas-avg-region-quality
+
+	measure 'Avg Organic Demand' = AVERAGE ( customer_features[organic_demand_score] )
+		formatString: 0.000
+		displayFolder: "5 Geography"
+		lineageTag: meas-avg-organic-demand
+
+	measure 'Margin Adjusted CLV' = SUMX ( customer_features, customer_features[estimated_clv_proxy] * ( 1 - customer_features[promo_dependency_score] ) )
+		formatString: $#,##0
+		displayFolder: "5 Geography"
+		lineageTag: meas-margin-adjusted-clv
+
+	partition customer_features = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("e:\Cagiitg\data\processed\customer_features.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(PromotedHeaders, {
+			        {"customer_id", Int64.Type},
+			        {"age", Int64.Type},
+			        {"gender", type text},
+			        {"item_purchased", type text},
+			        {"category", type text},
+			        {"purchase_amount", type number},
+			        {"location", type text},
+			        {"size", type text},
+			        {"color", type text},
+			        {"season", type text},
+			        {"review_rating", type number},
+			        {"subscription_status", type text},
+			        {"shipping_type", type text},
+			        {"discount_applied", type text},
+			        {"previous_purchases", Int64.Type},
+			        {"payment_method", type text},
+			        {"frequency_of_purchases", type text},
+			        {"loyalty_score", type number},
+			        {"loyalty_score_v1", type number},
+			        {"loyalty_score_v2", type number},
+			        {"loyalty_tier", type text},
+			        {"loyalty_confidence_index", type number},
+			        {"repeat_purchase_intensity", type number},
+			        {"brand_affinity_score", type number},
+			        {"promo_dependency_score", type number},
+			        {"non_discount_purchase_ratio", type number},
+			        {"discount_elasticity_proxy", type number},
+			        {"promo_reliance_tier", type text},
+			        {"annual_value", type number},
+			        {"margin_factor", type number},
+			        {"economic_value_proxy", type number},
+			        {"expected_tenure_years", type number},
+			        {"estimated_clv_proxy", type number},
+			        {"revenue_contribution_tier", type text},
+			        {"high_value_probability", type number},
+			        {"premium_customer_flag", Int64.Type},
+			        {"satisfaction_flag", Int64.Type},
+			        {"category_breadth_est", type number},
+			        {"shipping_urgency_index", type number},
+			        {"payment_repeat_index", type number},
+			        {"seasonal_consistency_score", type number},
+			        {"organic_demand_score", type number},
+			        {"region_quality_index", type number},
+			        {"promo_sensitivity_geo", type number},
+			        {"customer_persona", type text},
+			        {"behaviour_cluster", type text}
+			    })
+			in
+			    Typed
+

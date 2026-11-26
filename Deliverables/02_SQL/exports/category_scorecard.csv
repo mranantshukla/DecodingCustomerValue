@@ -1,0 +1,5 @@
+category,purchases,avg_basket,avg_loyalty,avg_rating,avg_promo_dependency,discount_elasticity,total_clv
+Clothing,1737,60.02,0.514,3.72,0.421,-0.008,5520737.63
+Accessories,1240,59.83,0.518,3.77,0.438,-0.0394,4034279.37
+Footwear,599,60.25,0.52,3.79,0.432,0.0458,2034914.23
+Outerwear,324,57.15,0.513,3.75,0.444,-0.0568,1008405.4

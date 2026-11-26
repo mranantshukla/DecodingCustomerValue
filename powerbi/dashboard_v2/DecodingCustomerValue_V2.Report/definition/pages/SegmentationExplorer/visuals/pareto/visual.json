@@ -1,0 +1,132 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "pareto",
+  "position": {
+    "x": 16,
+    "y": 600,
+    "z": 6,
+    "height": 100,
+    "width": 1248,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "lineClusteredColumnComboChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "revenue_concentration"
+                    }
+                  },
+                  "Property": "value_decile"
+                }
+              },
+              "queryRef": "revenue_concentration.value_decile",
+              "nativeQueryRef": "value_decile",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "revenue_concentration"
+                        }
+                      },
+                      "Property": "decile_clv"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(revenue_concentration.decile_clv)",
+              "nativeQueryRef": "Sum of decile_clv"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "revenue_concentration"
+                        }
+                      },
+                      "Property": "cumulative_pct_clv"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(revenue_concentration.cumulative_pct_clv)",
+              "nativeQueryRef": "Sum of cumulative_pct_clv"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Revenue concentration (Pareto)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#16324F'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

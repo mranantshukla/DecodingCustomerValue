@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m pytest)",
+      "Bash(python -m pip install --quiet ruff black)",
+      "Bash(python -m ruff check src tests scripts config)",
+      "Bash(python -m ruff check --fix src tests scripts config)",
+      "Bash(python -m black --check src tests scripts config)",
+      "Bash(python -m black src tests scripts config)",
+      "Bash(python -m py_compile src/dashboard/app.py src/dashboard/pages/*.py)",
+      "Bash(python scripts/generate_glossary.py)",
+      "Bash(python -m py_compile src/dashboard/app.py src/dashboard/ui.py src/dashboard/pages/*.py)",
+      "PowerShell(\"Files PBI Desktop may have just rewritten / added in our project:\"; Get-ChildItem 'e:\\\\Cagiitg\\\\powerbi\\\\dashboard' -Recurse -Force | Where-Object { $_.LastWriteTime -gt \\(Get-Date\\).AddMinutes\\(-3\\) } | Select-Object @{N='Path';E={$_.FullName.Substring\\(24\\)}}, Length, LastWriteTime | Sort-Object LastWriteTime -Descending | Format-Table -AutoSize)"
+    ]
+  }
+}

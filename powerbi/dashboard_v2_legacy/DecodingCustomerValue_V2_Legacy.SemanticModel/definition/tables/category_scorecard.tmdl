@@ -1,0 +1,77 @@
+table category_scorecard
+	lineageTag: tbl-category-scorecard
+
+	column category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: category
+		lineageTag: col-category-scorecard-category
+
+	column purchases
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: purchases
+		formatString: #,##0
+		lineageTag: col-category-scorecard-purchases
+
+	column avg_basket
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_basket
+		formatString: $#,##0.00
+		lineageTag: col-category-scorecard-avg-basket
+
+	column avg_loyalty
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_loyalty
+		formatString: 0.000
+		lineageTag: col-category-scorecard-avg-loyalty
+
+	column avg_rating
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_rating
+		formatString: 0.00
+		lineageTag: col-category-scorecard-avg-rating
+
+	column avg_promo_dependency
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_promo_dependency
+		formatString: 0.000
+		lineageTag: col-category-scorecard-avg-promo-dependency
+
+	column discount_elasticity
+		dataType: double
+		summarizeBy: average
+		sourceColumn: discount_elasticity
+		formatString: 0.0000
+		lineageTag: col-category-scorecard-discount-elasticity
+
+	column total_clv
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: total_clv
+		formatString: $#,##0
+		lineageTag: col-category-scorecard-total-clv
+
+	partition category_scorecard = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("e:\Cagiitg\reports\sql_exports\category_scorecard.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(PromotedHeaders, {
+			        {"category", type text},
+			        {"purchases", Int64.Type},
+			        {"avg_basket", type number},
+			        {"avg_loyalty", type number},
+			        {"avg_rating", type number},
+			        {"avg_promo_dependency", type number},
+			        {"discount_elasticity", type number},
+			        {"total_clv", type number}
+			    }),
+			    Cleaned = Table.ReplaceErrorValues(Typed, List.Transform(Table.ColumnNames(Typed), each {_, null}))
+			in
+			    Cleaned

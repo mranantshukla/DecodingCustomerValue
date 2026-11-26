@@ -1,0 +1,5 @@
+loyalty_band,promo_band,customers,avg_clv,total_clv
+High Loyalty,High Promo,837,4370.73,3658300.51
+High Loyalty,Low Promo,1106,4984.78,5513165.91
+Low Loyalty,High Promo,840,1499.16,1259291.47
+Low Loyalty,Low Promo,1117,1940.54,2167578.74

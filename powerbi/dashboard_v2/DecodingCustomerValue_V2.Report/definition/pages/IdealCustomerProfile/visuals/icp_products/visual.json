@@ -1,0 +1,157 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "icp_products",
+  "position": {
+    "x": 16,
+    "y": 388,
+    "z": 6,
+    "height": 280,
+    "width": 620,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "high_loyalty_products"
+                    }
+                  },
+                  "Property": "item_purchased"
+                }
+              },
+              "queryRef": "high_loyalty_products.item_purchased",
+              "nativeQueryRef": "item_purchased",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "high_loyalty_products"
+                    }
+                  },
+                  "Property": "category"
+                }
+              },
+              "queryRef": "high_loyalty_products.category",
+              "nativeQueryRef": "category"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "high_loyalty_products"
+                        }
+                      },
+                      "Property": "purchases"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(high_loyalty_products.purchases)",
+              "nativeQueryRef": "Sum of purchases"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "high_loyalty_products"
+                        }
+                      },
+                      "Property": "avg_loyalty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(high_loyalty_products.avg_loyalty)",
+              "nativeQueryRef": "Sum of avg_loyalty"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "high_loyalty_products"
+                        }
+                      },
+                      "Property": "avg_clv"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(high_loyalty_products.avg_clv)",
+              "nativeQueryRef": "Sum of avg_clv"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'High-loyalty products'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#16324F'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "subtitle",
+  "position": {
+    "x": 16,
+    "y": 50,
+    "z": 2,
+    "height": 24,
+    "width": 1248,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Filtered to Premium Loyalist + Loyal Full-Price personas — the acquisition team's targeting brief.",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#8A99A8",
+                      "fontFamily": "'Segoe UI'",
+                      "fontStyle": "italic"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

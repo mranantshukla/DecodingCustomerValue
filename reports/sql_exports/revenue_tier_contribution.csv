@@ -1,0 +1,5 @@
+tier,customers,pct_customers,total_clv,pct_clv,avg_promo_dependency
+Platinum,975,25.0,8540261.14,67.8,0.398
+Gold,975,25.0,2959667.2,23.5,0.447
+Silver,975,25.0,878454.03,7.0,0.421
+Bronze,975,25.0,219954.26,1.7,0.453

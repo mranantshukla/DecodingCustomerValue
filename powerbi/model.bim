@@ -1,0 +1,132 @@
+{
+  "name": "DecodingCustomerValue",
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "customer_features",
+        "lineageTag": "dcv-customer-features",
+        "columns": [
+          { "name": "customer_id",                "dataType": "int64",   "sourceColumn": "customer_id",                "summarizeBy": "none",    "formatString": "0" },
+          { "name": "age",                        "dataType": "int64",   "sourceColumn": "age",                        "summarizeBy": "average", "formatString": "0" },
+          { "name": "gender",                     "dataType": "string",  "sourceColumn": "gender",                     "summarizeBy": "none" },
+          { "name": "item_purchased",             "dataType": "string",  "sourceColumn": "item_purchased",             "summarizeBy": "none" },
+          { "name": "category",                   "dataType": "string",  "sourceColumn": "category",                   "summarizeBy": "none" },
+          { "name": "purchase_amount",            "dataType": "double",  "sourceColumn": "purchase_amount",            "summarizeBy": "sum",     "formatString": "\\$#,##0.00" },
+          { "name": "location",                   "dataType": "string",  "sourceColumn": "location",                   "summarizeBy": "none",    "dataCategory": "State" },
+          { "name": "size",                       "dataType": "string",  "sourceColumn": "size",                       "summarizeBy": "none" },
+          { "name": "color",                      "dataType": "string",  "sourceColumn": "color",                      "summarizeBy": "none" },
+          { "name": "season",                     "dataType": "string",  "sourceColumn": "season",                     "summarizeBy": "none" },
+          { "name": "review_rating",              "dataType": "double",  "sourceColumn": "review_rating",              "summarizeBy": "average", "formatString": "0.00" },
+          { "name": "subscription_status",        "dataType": "string",  "sourceColumn": "subscription_status",        "summarizeBy": "none" },
+          { "name": "shipping_type",              "dataType": "string",  "sourceColumn": "shipping_type",              "summarizeBy": "none" },
+          { "name": "discount_applied",           "dataType": "string",  "sourceColumn": "discount_applied",           "summarizeBy": "none" },
+          { "name": "previous_purchases",         "dataType": "int64",   "sourceColumn": "previous_purchases",         "summarizeBy": "sum",     "formatString": "0" },
+          { "name": "payment_method",             "dataType": "string",  "sourceColumn": "payment_method",             "summarizeBy": "none" },
+          { "name": "frequency_of_purchases",     "dataType": "string",  "sourceColumn": "frequency_of_purchases",     "summarizeBy": "none" },
+          { "name": "loyalty_score",              "dataType": "double",  "sourceColumn": "loyalty_score",              "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "loyalty_score_v1",           "dataType": "double",  "sourceColumn": "loyalty_score_v1",           "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "loyalty_score_v2",           "dataType": "double",  "sourceColumn": "loyalty_score_v2",           "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "loyalty_tier",               "dataType": "string",  "sourceColumn": "loyalty_tier",               "summarizeBy": "none" },
+          { "name": "loyalty_confidence_index",   "dataType": "double",  "sourceColumn": "loyalty_confidence_index",   "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "repeat_purchase_intensity",  "dataType": "double",  "sourceColumn": "repeat_purchase_intensity",  "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "brand_affinity_score",       "dataType": "double",  "sourceColumn": "brand_affinity_score",       "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "promo_dependency_score",     "dataType": "double",  "sourceColumn": "promo_dependency_score",     "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "non_discount_purchase_ratio","dataType": "double",  "sourceColumn": "non_discount_purchase_ratio","summarizeBy": "average", "formatString": "0.000" },
+          { "name": "discount_elasticity_proxy",  "dataType": "double",  "sourceColumn": "discount_elasticity_proxy",  "summarizeBy": "average", "formatString": "0.0000" },
+          { "name": "promo_reliance_tier",        "dataType": "string",  "sourceColumn": "promo_reliance_tier",        "summarizeBy": "none" },
+          { "name": "annual_value",               "dataType": "double",  "sourceColumn": "annual_value",               "summarizeBy": "sum",     "formatString": "\\$#,##0" },
+          { "name": "margin_factor",              "dataType": "double",  "sourceColumn": "margin_factor",              "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "economic_value_proxy",       "dataType": "double",  "sourceColumn": "economic_value_proxy",       "summarizeBy": "sum",     "formatString": "\\$#,##0" },
+          { "name": "expected_tenure_years",      "dataType": "double",  "sourceColumn": "expected_tenure_years",      "summarizeBy": "average", "formatString": "0.00" },
+          { "name": "estimated_clv_proxy",        "dataType": "double",  "sourceColumn": "estimated_clv_proxy",        "summarizeBy": "sum",     "formatString": "\\$#,##0" },
+          { "name": "revenue_contribution_tier",  "dataType": "string",  "sourceColumn": "revenue_contribution_tier",  "summarizeBy": "none" },
+          { "name": "high_value_probability",     "dataType": "double",  "sourceColumn": "high_value_probability",     "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "premium_customer_flag",      "dataType": "int64",   "sourceColumn": "premium_customer_flag",      "summarizeBy": "average", "formatString": "0%" },
+          { "name": "satisfaction_flag",          "dataType": "int64",   "sourceColumn": "satisfaction_flag",          "summarizeBy": "average", "formatString": "0%" },
+          { "name": "category_breadth_est",       "dataType": "double",  "sourceColumn": "category_breadth_est",       "summarizeBy": "average", "formatString": "0.00" },
+          { "name": "shipping_urgency_index",     "dataType": "double",  "sourceColumn": "shipping_urgency_index",     "summarizeBy": "average", "formatString": "0.00" },
+          { "name": "payment_repeat_index",       "dataType": "double",  "sourceColumn": "payment_repeat_index",       "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "seasonal_consistency_score", "dataType": "double",  "sourceColumn": "seasonal_consistency_score", "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "organic_demand_score",       "dataType": "double",  "sourceColumn": "organic_demand_score",       "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "region_quality_index",       "dataType": "double",  "sourceColumn": "region_quality_index",       "summarizeBy": "average", "formatString": "0.000" },
+          { "name": "promo_sensitivity_geo",      "dataType": "double",  "sourceColumn": "promo_sensitivity_geo",      "summarizeBy": "average", "formatString": "0.0000" },
+          { "name": "customer_persona",           "dataType": "string",  "sourceColumn": "customer_persona",           "summarizeBy": "none" },
+          { "name": "behaviour_cluster",          "dataType": "string",  "sourceColumn": "behaviour_cluster",          "summarizeBy": "none" }
+        ],
+        "partitions": [
+          {
+            "name": "customer_features-partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"<<REPO_ROOT>>\\data\\processed\\customer_features.csv\"),[Delimiter=\",\", Columns=46, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders,{",
+                "        {\"customer_id\", Int64.Type}, {\"age\", Int64.Type}, {\"gender\", type text},",
+                "        {\"item_purchased\", type text}, {\"category\", type text}, {\"purchase_amount\", type number},",
+                "        {\"location\", type text}, {\"size\", type text}, {\"color\", type text}, {\"season\", type text},",
+                "        {\"review_rating\", type number}, {\"subscription_status\", type text}, {\"shipping_type\", type text},",
+                "        {\"discount_applied\", type text}, {\"previous_purchases\", Int64.Type}, {\"payment_method\", type text},",
+                "        {\"frequency_of_purchases\", type text}, {\"loyalty_score\", type number}, {\"loyalty_score_v1\", type number},",
+                "        {\"loyalty_score_v2\", type number}, {\"loyalty_tier\", type text}, {\"loyalty_confidence_index\", type number},",
+                "        {\"repeat_purchase_intensity\", type number}, {\"brand_affinity_score\", type number},",
+                "        {\"promo_dependency_score\", type number}, {\"non_discount_purchase_ratio\", type number},",
+                "        {\"discount_elasticity_proxy\", type number}, {\"promo_reliance_tier\", type text},",
+                "        {\"annual_value\", type number}, {\"margin_factor\", type number}, {\"economic_value_proxy\", type number},",
+                "        {\"expected_tenure_years\", type number}, {\"estimated_clv_proxy\", type number},",
+                "        {\"revenue_contribution_tier\", type text}, {\"high_value_probability\", type number},",
+                "        {\"premium_customer_flag\", Int64.Type}, {\"satisfaction_flag\", Int64.Type},",
+                "        {\"category_breadth_est\", type number}, {\"shipping_urgency_index\", type number},",
+                "        {\"payment_repeat_index\", type number}, {\"seasonal_consistency_score\", type number},",
+                "        {\"organic_demand_score\", type number}, {\"region_quality_index\", type number},",
+                "        {\"promo_sensitivity_geo\", type number}, {\"customer_persona\", type text}, {\"behaviour_cluster\", type text}",
+                "    })",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          { "name": "Total Customers",       "expression": "DISTINCTCOUNT ( customer_features[customer_id] )", "formatString": "#,##0",        "displayFolder": "1 Core KPIs" },
+          { "name": "Total Projected CLV",   "expression": "SUM ( customer_features[estimated_clv_proxy] )",   "formatString": "\\$#,##0",     "displayFolder": "1 Core KPIs" },
+          { "name": "Avg CLV per Customer",  "expression": "DIVIDE ( [Total Projected CLV], [Total Customers] )", "formatString": "\\$#,##0",  "displayFolder": "1 Core KPIs" },
+          { "name": "Avg Loyalty Score",     "expression": "AVERAGE ( customer_features[loyalty_score] )",     "formatString": "0.000",        "displayFolder": "1 Core KPIs" },
+          { "name": "Avg Promo Dependency",  "expression": "AVERAGE ( customer_features[promo_dependency_score] )", "formatString": "0.000",   "displayFolder": "1 Core KPIs" },
+          { "name": "Pct Premium Customers", "expression": "DIVIDE ( CALCULATE ( [Total Customers], customer_features[premium_customer_flag] = 1 ), [Total Customers] )", "formatString": "0.0%", "displayFolder": "1 Core KPIs" },
+          { "name": "Pct Satisfied",         "expression": "AVERAGE ( customer_features[satisfaction_flag] )", "formatString": "0.0%",         "displayFolder": "1 Core KPIs" },
+          { "name": "Pct Discounted",        "expression": "DIVIDE ( CALCULATE ( [Total Customers], customer_features[discount_applied] = \"Yes\" ), [Total Customers] )", "formatString": "0.0%", "displayFolder": "1 Core KPIs" },
+          { "name": "Pct Subscribed",        "expression": "DIVIDE ( CALCULATE ( [Total Customers], customer_features[subscription_status] = \"Yes\" ), [Total Customers] )", "formatString": "0.0%", "displayFolder": "1 Core KPIs" },
+
+          { "name": "CLV Top 20 Pct",        "expression": "VAR Cutoff = PERCENTILEX.INC ( ALL ( customer_features ), customer_features[estimated_clv_proxy], 0.80 ) RETURN CALCULATE ( [Total Projected CLV], customer_features[estimated_clv_proxy] >= Cutoff )", "formatString": "\\$#,##0", "displayFolder": "2 Concentration" },
+          { "name": "Pct CLV from Top 20 Pct", "expression": "DIVIDE ( [CLV Top 20 Pct], CALCULATE ( [Total Projected CLV], ALL ( customer_features ) ) )", "formatString": "0.0%", "displayFolder": "2 Concentration" },
+
+          { "name": "Discounted CLV",        "expression": "CALCULATE ( [Total Projected CLV], customer_features[discount_applied] = \"Yes\" )", "formatString": "\\$#,##0", "displayFolder": "3 Margin Risk" },
+          { "name": "Full Price CLV",        "expression": "CALCULATE ( [Total Projected CLV], customer_features[discount_applied] = \"No\" )",  "formatString": "\\$#,##0", "displayFolder": "3 Margin Risk" },
+          { "name": "Pct CLV Discount Attached", "expression": "DIVIDE ( [Discounted CLV], [Total Projected CLV] )", "formatString": "0.0%",     "displayFolder": "3 Margin Risk" },
+          { "name": "Estimated Margin Recovery", "expression": "VAR MarginPts = 0.15 RETURN CALCULATE ( SUMX ( customer_features, customer_features[annual_value] * MarginPts ), customer_features[discount_applied] = \"Yes\", customer_features[promo_reliance_tier] IN { \"Full-Price Loyalist\", \"Occasional Discount\" } )", "formatString": "\\$#,##0", "displayFolder": "3 Margin Risk" },
+
+          { "name": "Margin At Risk CLV",    "expression": "CALCULATE ( [Total Projected CLV], customer_features[promo_dependency_score] >= 0.5, customer_features[loyalty_score] >= CALCULATE ( AVERAGE ( customer_features[loyalty_score] ), ALL ( customer_features ) ) )", "formatString": "\\$#,##0", "displayFolder": "4 Promo x Retention" },
+
+          { "name": "Avg Region Quality",    "expression": "AVERAGE ( customer_features[region_quality_index] )", "formatString": "0.000", "displayFolder": "5 Geography" },
+          { "name": "Avg Organic Demand",    "expression": "AVERAGE ( customer_features[organic_demand_score] )", "formatString": "0.000", "displayFolder": "5 Geography" },
+          { "name": "Margin Adjusted CLV",   "expression": "SUMX ( customer_features, customer_features[estimated_clv_proxy] * ( 1 - customer_features[promo_dependency_score] ) )", "formatString": "\\$#,##0", "displayFolder": "5 Geography" }
+        ]
+      }
+    ],
+    "annotations": [
+      { "name": "PBIDesktopVersion", "value": "2.124.x" },
+      { "name": "__PBI_TimeIntelligenceEnabled", "value": "0" }
+    ]
+  }
+}

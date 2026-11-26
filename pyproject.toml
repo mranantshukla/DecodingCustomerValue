@@ -1,0 +1,86 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "decoding-customer-value"
+version = "1.0.0"
+description = "A SQL-driven customer retention & loyalty intelligence platform for a D2C fashion brand."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Analytics Engineering" }]
+keywords = ["analytics-engineering", "customer-loyalty", "retention", "sql", "power-bi", "streamlit"]
+
+dependencies = [
+  "pandas>=2.0",
+  "numpy>=1.24",
+  "pydantic>=2.5",
+  "pydantic-settings>=2.1",
+  "python-dotenv>=1.0",
+  "scikit-learn>=1.3",
+  "SQLAlchemy>=2.0",
+  "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+# Postgres driver (production database target)
+postgres = ["psycopg2-binary>=2.9"]
+# Interactive dashboard layer
+dashboard = ["streamlit>=1.30", "plotly>=5.18"]
+# Stricter, declarative data-contract validation (optional upgrade over the
+# built-in validator). The core pipeline does NOT require this.
+validation = ["pandera>=0.18"]
+# Developer tooling
+dev = [
+  "pytest>=7.4",
+  "pytest-cov>=4.1",
+  "black>=23.12",
+  "ruff>=0.1.9",
+  "pre-commit>=3.6",
+  "mypy>=1.8",
+]
+# Everything, for a full local install
+all = [
+  "decoding-customer-value[postgres,dashboard,validation,dev]",
+]
+
+[project.scripts]
+# `dcv-pipeline` becomes available after `pip install -e .`
+dcv-pipeline = "src.pipeline:main"
+
+[tool.setuptools]
+packages = ["src"]
+
+# ---------------------------------------------------------------------------
+# Tooling configuration
+# ---------------------------------------------------------------------------
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# pycodestyle, Pyflakes, isort, pep8-naming, pyupgrade, bugbear, comprehensions
+select = ["E", "F", "I", "N", "UP", "B", "C4", "SIM"]
+ignore = [
+  "E501",   # line length handled by black
+  "B905",   # zip(strict=) not always available on target runtimes
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_unused_ignores = true
+ignore_missing_imports = true
+plugins = ["pydantic.mypy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"
+filterwarnings = ["ignore::DeprecationWarning"]

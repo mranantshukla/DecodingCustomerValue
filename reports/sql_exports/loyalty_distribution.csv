@@ -1,0 +1,6 @@
+loyalty_tier,customers,pct_customers,avg_clv,pct_of_clv
+L1-Dormant,780,20.0,811.64,5.0
+L2-Casual,780,20.0,2139.56,13.2
+L3-Engaged,780,20.0,2903.46,18.0
+L4-Committed,780,20.0,3749.27,23.2
+L5-Champion,780,20.0,6547.79,40.5

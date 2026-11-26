@@ -1,0 +1,54 @@
+table organic_demand_regions
+	lineageTag: tbl-organic-demand-regions
+
+	column location
+		dataType: string
+		summarizeBy: none
+		sourceColumn: location
+		dataCategory: State
+		lineageTag: col-organic-demand-regions-location
+
+	column organic_demand
+		dataType: double
+		summarizeBy: average
+		sourceColumn: organic_demand
+		formatString: 0.000
+		lineageTag: col-organic-demand-regions-organic-demand
+
+	column region_quality
+		dataType: double
+		summarizeBy: average
+		sourceColumn: region_quality
+		formatString: 0.000
+		lineageTag: col-organic-demand-regions-region-quality
+
+	column total_clv
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: total_clv
+		formatString: $#,##0
+		lineageTag: col-organic-demand-regions-total-clv
+
+	column customers
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: customers
+		formatString: #,##0
+		lineageTag: col-organic-demand-regions-customers
+
+	partition organic_demand_regions = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("e:\Cagiitg\reports\sql_exports\organic_demand_regions.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(PromotedHeaders, {
+			        {"location", type text},
+			        {"organic_demand", type number},
+			        {"region_quality", type number},
+			        {"total_clv", type number},
+			        {"customers", Int64.Type}
+			    }),
+			    Cleaned = Table.ReplaceErrorValues(Typed, List.Transform(Table.ColumnNames(Typed), each {_, null}))
+			in
+			    Cleaned

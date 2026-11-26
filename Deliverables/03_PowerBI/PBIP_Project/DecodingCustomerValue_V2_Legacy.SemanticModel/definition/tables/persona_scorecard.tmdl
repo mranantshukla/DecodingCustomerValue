@@ -1,0 +1,85 @@
+table persona_scorecard
+	lineageTag: tbl-persona-scorecard
+
+	column customer_persona
+		dataType: string
+		summarizeBy: none
+		sourceColumn: customer_persona
+		lineageTag: col-persona-scorecard-customer-persona
+
+	column customers
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: customers
+		formatString: #,##0
+		lineageTag: col-persona-scorecard-customers
+
+	column pct_of_customers
+		dataType: double
+		summarizeBy: average
+		sourceColumn: pct_of_customers
+		formatString: 0.0%
+		lineageTag: col-persona-scorecard-pct-of-customers
+
+	column avg_loyalty
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_loyalty
+		formatString: 0.000
+		lineageTag: col-persona-scorecard-avg-loyalty
+
+	column avg_promo_dependency
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_promo_dependency
+		formatString: 0.000
+		lineageTag: col-persona-scorecard-avg-promo-dependency
+
+	column avg_clv
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_clv
+		formatString: $#,##0
+		lineageTag: col-persona-scorecard-avg-clv
+
+	column total_clv
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: total_clv
+		formatString: $#,##0
+		lineageTag: col-persona-scorecard-total-clv
+
+	column pct_of_clv
+		dataType: double
+		summarizeBy: average
+		sourceColumn: pct_of_clv
+		formatString: 0.0%
+		lineageTag: col-persona-scorecard-pct-of-clv
+
+	column pct_satisfied
+		dataType: double
+		summarizeBy: average
+		sourceColumn: pct_satisfied
+		formatString: 0.0%
+		lineageTag: col-persona-scorecard-pct-satisfied
+
+	partition persona_scorecard = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("e:\Cagiitg\reports\sql_exports\persona_scorecard.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(PromotedHeaders, {
+			        {"customer_persona", type text},
+			        {"customers", Int64.Type},
+			        {"pct_of_customers", type number},
+			        {"avg_loyalty", type number},
+			        {"avg_promo_dependency", type number},
+			        {"avg_clv", type number},
+			        {"total_clv", type number},
+			        {"pct_of_clv", type number},
+			        {"pct_satisfied", type number}
+			    }),
+			    Cleaned = Table.ReplaceErrorValues(Typed, List.Transform(Table.ColumnNames(Typed), each {_, null}))
+			in
+			    Cleaned

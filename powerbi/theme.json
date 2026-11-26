@@ -1,0 +1,28 @@
+{
+  "name": "Decoding Customer Value",
+  "dataColors": ["#16324F", "#2E86AB", "#5FA8D3", "#E0A458", "#3A8B5C", "#C1483B", "#8A99A8", "#6C5B7B"],
+  "background": "#FFFFFF",
+  "foreground": "#16324F",
+  "tableAccent": "#2E86AB",
+  "good": "#3A8B5C",
+  "neutral": "#E0A458",
+  "bad": "#C1483B",
+  "maximum": "#16324F",
+  "minimum": "#A9C5DD",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [{ "fontColor": { "solid": { "color": "#16324F" } }, "fontSize": 13, "fontFamily": "Segoe UI Semibold" }],
+        "labels": [{ "fontFamily": "Segoe UI", "fontSize": 10 }],
+        "background": [{ "show": true, "color": { "solid": { "color": "#FFFFFF" } } }],
+        "border": [{ "show": false }]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [{ "color": { "solid": { "color": "#16324F" } }, "fontSize": 28, "fontFamily": "Segoe UI Semibold" }],
+        "categoryLabels": [{ "color": { "solid": { "color": "#8A99A8" } }, "fontSize": 11 }]
+      }
+    }
+  }
+}

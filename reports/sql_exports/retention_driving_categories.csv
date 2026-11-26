@@ -1,0 +1,5 @@
+category,avg_loyalty,avg_rating,repeat_intensity,purchases,loyalty_rank
+Footwear,0.52,3.79,0.175,599,1
+Accessories,0.518,3.77,0.172,1240,2
+Clothing,0.514,3.72,0.167,1737,3
+Outerwear,0.513,3.75,0.174,324,4

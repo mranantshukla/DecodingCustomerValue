@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/1.4.0/schema.json",
+  "name": "HealthyCore",
+  "displayName": "Healthy Core",
+  "options": {
+    "suppressDisplay": false
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "Founder",
+    "sections": {
+      "Founder": {
+        "visualContainers": {}
+      }
+    }
+  }
+}

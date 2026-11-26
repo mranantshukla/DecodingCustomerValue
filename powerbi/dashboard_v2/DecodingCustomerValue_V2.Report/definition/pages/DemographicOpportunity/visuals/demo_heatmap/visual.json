@@ -1,0 +1,171 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "demo_heatmap",
+  "position": {
+    "x": 16,
+    "y": 112,
+    "z": 3,
+    "height": 300,
+    "width": 1248,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "demographic_opportunity"
+                    }
+                  },
+                  "Property": "age_band"
+                }
+              },
+              "queryRef": "demographic_opportunity.age_band",
+              "nativeQueryRef": "age_band",
+              "active": true
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "demographic_opportunity"
+                    }
+                  },
+                  "Property": "gender"
+                }
+              },
+              "queryRef": "demographic_opportunity.gender",
+              "nativeQueryRef": "gender",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "demographic_opportunity"
+                        }
+                      },
+                      "Property": "avg_clv"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(demographic_opportunity.avg_clv)",
+              "nativeQueryRef": "Sum of avg_clv"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Age band × gender — average CLV'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#16324F'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "linearGradient3": {
+                "min": {
+                  "solid": {
+                    "color": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'#EAF4FB'"
+                        }
+                      }
+                    }
+                  }
+                },
+                "mid": {
+                  "solid": {
+                    "color": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'#6FB1D6'"
+                        }
+                      }
+                    }
+                  }
+                },
+                "max": {
+                  "solid": {
+                    "color": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'#16324F'"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
